@@ -1,0 +1,1 @@
+ALTER TABLE `pcr_document` ADD `source` varchar(256) NOT NULL;

@@ -10,6 +10,7 @@ export const document = mysqlTable("document", {
     .primaryKey()
     .notNull(),
   name: varchar("name", { length: 256 }).notNull(),
+  source: varchar("source", { length: 256 }).notNull(),
 });
 
 export const createDocumentSchema = createInsertSchema(document);
