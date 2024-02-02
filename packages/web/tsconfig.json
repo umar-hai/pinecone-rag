@@ -21,9 +21,10 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@pinecone-rag/core/*": ["../core/src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "sst-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

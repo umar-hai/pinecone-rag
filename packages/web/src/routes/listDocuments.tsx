@@ -1,3 +1,7 @@
+import { trpc } from "@/utils/trpc";
+
 export function ListDocuments() {
-  return <div>List documents</div>;
+  const { data } = trpc.listDocuments.useQuery();
+
+  return <div>{JSON.stringify(data)}</div>;
 }

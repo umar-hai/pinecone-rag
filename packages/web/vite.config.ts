@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@pinecone-rag/core": path.resolve(__dirname, "../core/src"),
     },
   },
 });
