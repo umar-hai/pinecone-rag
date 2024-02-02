@@ -1,13 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import { ListDocuments } from "./routes/listDocuments.tsx";
+import { CreateDocument } from "./routes/createDocument.tsx";
+import { DocumentDetails } from "./routes/documentDetails.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <ListDocuments />,
+  },
+  {
+    path: "/create",
+    element: <CreateDocument />,
+  },
+  {
+    path: "/:id",
+    element: <DocumentDetails />,
   },
 ]);
 
