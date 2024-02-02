@@ -1,0 +1,45 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "77675f65-e2bd-4ede-82a7-ec01bb39308b",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "pcr_document": {
+      "name": "pcr_document",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(uuid())"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "pcr_document_id": {
+          "name": "pcr_document_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
