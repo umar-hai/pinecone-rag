@@ -10,6 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.18.1",
+    "@trpc/client": "11.0.0-next-beta.257",
+    "@trpc/next": "11.0.0-next-beta.257",
+    "@trpc/react-query": "11.0.0-next-beta.257",
+    "@trpc/server": "11.0.0-next-beta.257",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

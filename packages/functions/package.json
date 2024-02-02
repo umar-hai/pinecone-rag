@@ -7,9 +7,12 @@
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
-    "@types/node": "^20.11.16",
     "@types/aws-lambda": "^8.10.133",
-    "vitest": "^1.2.2",
-    "sst": "^2.40.1"
+    "@types/node": "^20.11.16",
+    "sst": "^2.40.1",
+    "vitest": "^1.2.2"
+  },
+  "dependencies": {
+    "@trpc/server": "11.0.0-next-beta.257"
   }
 }
