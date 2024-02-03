@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import { Link, Outlet } from "react-router-dom";
 
 export function Layout() {
@@ -9,7 +10,14 @@ export function Layout() {
             <h1 className="text-2xl font-bold tracking-tight mr-6">
               <Link to="/">pinecone rag</Link>
             </h1>
-            <div className="flex gap-2"></div>
+          </div>
+          <div className="flex gap-2">
+            <Link
+              className={buttonVariants({ variant: "outline" })}
+              to="create"
+            >
+              Add video
+            </Link>
           </div>
         </div>
       </header>

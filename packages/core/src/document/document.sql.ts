@@ -2,7 +2,7 @@ import { varchar } from "drizzle-orm/mysql-core";
 import { mysqlTable } from "../drizzle/utils";
 import { sql } from "drizzle-orm";
 import { z } from "zod";
-import { createInsertSchema } from "drizzle-zod";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 export const document = mysqlTable("document", {
   id: varchar("id", { length: 191 })
@@ -17,3 +17,7 @@ export const document = mysqlTable("document", {
 export const createDocumentSchema = createInsertSchema(document);
 
 export type NewDocument = z.infer<typeof createDocumentSchema>;
+
+export const selectDocumentSchema = createSelectSchema(document);
+
+export type Document = z.infer<typeof selectDocumentSchema>;
