@@ -1,7 +1,12 @@
 import { initTRPC } from "@trpc/server";
 import { awsLambdaRequestHandler } from "@trpc/server/adapters/aws-lambda";
-import { createDocument, listDocuments } from "@pincone-rag/core/document";
+import {
+  answerQuestion,
+  createDocument,
+  listDocuments,
+} from "@pincone-rag/core/document";
 import { z } from "zod";
+import { questionResponseSchema } from "@pincone-rag/core/document/document.sql";
 
 const t = initTRPC.create();
 
@@ -10,6 +15,10 @@ export const appRouter = t.router({
   createDocument: t.procedure
     .input(z.string())
     .mutation(async ({ input }) => await createDocument(input)),
+  answerQuestion: t.procedure
+    .input(z.string())
+    .output(questionResponseSchema)
+    .mutation(async ({ input }) => answerQuestion(input)),
 });
 
 export const handler = awsLambdaRequestHandler({

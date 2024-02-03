@@ -58,3 +58,10 @@ export async function createDocument(source: string) {
 export async function listDocuments() {
   return await db.select().from(document);
 }
+
+export async function answerQuestion(question: string) {
+  return {
+    question,
+    answer: "foo",
+  };
+}

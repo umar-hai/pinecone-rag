@@ -21,3 +21,10 @@ export type NewDocument = z.infer<typeof createDocumentSchema>;
 export const selectDocumentSchema = createSelectSchema(document);
 
 export type Document = z.infer<typeof selectDocumentSchema>;
+
+export const questionResponseSchema = z.object({
+  question: z.string(),
+  answer: z.string(),
+});
+
+export type QuestionResponse = z.infer<typeof questionResponseSchema>;
