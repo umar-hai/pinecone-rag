@@ -1,7 +1,7 @@
 import { trpc } from "@/utils/trpc";
 import { Link } from "react-router-dom";
 import { Document } from "@pincone-rag/core/document/document.sql";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function ListDocuments() {
   const { data } = trpc.listDocuments.useQuery();
