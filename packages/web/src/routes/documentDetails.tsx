@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { QuestionResponse } from "@pincone-rag/core/document/document.sql";
+import { Loader2 } from "lucide-react";
 
 const FormSchema = z.object({
   question: z.string().min(1, {
@@ -47,6 +48,7 @@ export function DocumentDetails() {
   function onSubmit(data: z.infer<typeof FormSchema>, id: string) {
     answerQuestion.mutate(
       { ...data, id },
+
       {
         onSuccess(data) {
           setResponse(data);
@@ -115,6 +117,7 @@ export function DocumentDetails() {
                         <Input
                           placeholder="Type your message here..."
                           {...field}
+                          disabled={answerQuestion.isPending}
                         />
                       </FormControl>
                       <FormMessage />
@@ -124,7 +127,11 @@ export function DocumentDetails() {
                 <Button
                   className="bg-black text-white rounded-md p-2 mt-2 w-full"
                   type="submit"
+                  disabled={answerQuestion.isPending}
                 >
+                  {answerQuestion.isPending ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}
                   Send
                 </Button>
               </form>
