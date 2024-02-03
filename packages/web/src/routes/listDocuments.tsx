@@ -1,30 +1,17 @@
 import { trpc } from "@/utils/trpc";
 import { Link } from "react-router-dom";
-import { Document } from "@pincone-rag/core/document/document.sql";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function ListDocuments() {
   const { data } = trpc.listDocuments.useQuery();
 
-  return (
-    <div className="flex flex-col">
-      <DocumentsCardGrid documents={data} />
-    </div>
-  );
-}
-
-function DocumentsCardGrid({
-  documents,
-}: {
-  documents: Document[] | undefined;
-}) {
-  if (!documents) {
+  if (!data) {
     return null;
   }
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      {documents.map((doc) => (
+      {data.map((doc) => (
         <Card className="shadow-lg" key={doc.id}>
           <img
             alt="Video Thumbnail"

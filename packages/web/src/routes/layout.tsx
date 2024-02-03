@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 
 export function Layout() {
   return (
-    <div className="flex-col md:flex">
+    <div className="flex flex-col h-screen">
       <header className="border-b flex h-16 justify-between items-center px-4">
         <div className="container mx-auto flex gap-2 items-center justify-between">
           <div className="flex items-baseline">
@@ -21,9 +21,11 @@ export function Layout() {
           </div>
         </div>
       </header>
-      <main className="container mx-auto flex-1 pt-6 px-4">
-        <Outlet />
-      </main>
+      <div className="flex-1 overflow-y-auto">
+        <main className="container mx-auto py-6 px-4">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }
