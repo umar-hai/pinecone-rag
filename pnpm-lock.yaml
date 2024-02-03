@@ -60,6 +60,9 @@ importers:
       '@trpc/server':
         specifier: 11.0.0-next-beta.257
         version: 11.0.0-next-beta.257
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       '@types/aws-lambda':
         specifier: ^8.10.133
