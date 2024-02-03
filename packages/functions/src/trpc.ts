@@ -4,6 +4,7 @@ import {
   answerQuestion,
   answerQuestionSchema,
   createDocument,
+  deleteDocument,
   listDocuments,
 } from "@pincone-rag/core/document";
 import { z } from "zod";
@@ -20,6 +21,9 @@ export const appRouter = t.router({
     .input(answerQuestionSchema)
     .output(questionResponseSchema)
     .mutation(async ({ input }) => answerQuestion(input)),
+  deleteDocument: t.procedure
+    .input(z.string())
+    .mutation(({ input }) => deleteDocument(input)),
 });
 
 export const handler = awsLambdaRequestHandler({

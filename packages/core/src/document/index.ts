@@ -10,6 +10,7 @@ import { Config } from "sst/node/config";
 import { z } from "zod";
 import { RetrievalQAChain } from "langchain/chains";
 import { PromptTemplate } from "@langchain/core/prompts";
+import { eq } from "drizzle-orm";
 
 const pc = new Pinecone({
   apiKey: Config.PINECONE_API_KEY,
@@ -111,4 +112,10 @@ export async function answerQuestion({
     question,
     answer: res.text,
   };
+}
+
+export async function deleteDocument(id: string) {
+  await db.delete(document).where(eq(document.id, id));
+
+  await index.namespace(id).deleteAll();
 }

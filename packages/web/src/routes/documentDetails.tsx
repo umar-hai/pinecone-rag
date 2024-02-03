@@ -1,5 +1,5 @@
 import { trpc } from "@/utils/trpc";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -29,6 +29,11 @@ export function DocumentDetails() {
   const { data: docs } = trpc.listDocuments.useQuery();
 
   const answerQuestion = trpc.answerQuestion.useMutation();
+  const deleteDocument = trpc.deleteDocument.useMutation();
+
+  const navigate = useNavigate();
+
+  const loading = answerQuestion.isPending || deleteDocument.isPending;
 
   const [response, setResponse] = useState<QuestionResponse | undefined>();
 
@@ -58,11 +63,23 @@ export function DocumentDetails() {
     );
   }
 
+  function onDelete(id: string) {
+    deleteDocument.mutate(id, {
+      onSuccess: () => navigate("/"),
+    });
+  }
+
   return (
     <div className="w-full px-4 mx-auto grid grid-rows-[auto_1fr_auto] gap-4 md:gap-6 pb-10">
       <header>
-        <div className="mx-auto h-14 flex items-center gap-4">
+        <div className="mx-auto h-14 flex items-center justify-between gap-4">
           <h1 className="text-3xl font-semibold">{doc.name}</h1>
+          <Button onClick={() => onDelete(id)} variant="destructive">
+            {deleteDocument.isPending ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : null}
+            Delete Video
+          </Button>
         </div>
       </header>
       <main className="grid md:grid-cols-6 gap-10 items-start">
@@ -117,7 +134,7 @@ export function DocumentDetails() {
                         <Input
                           placeholder="Type your message here..."
                           {...field}
-                          disabled={answerQuestion.isPending}
+                          disabled={loading}
                         />
                       </FormControl>
                       <FormMessage />
@@ -127,7 +144,7 @@ export function DocumentDetails() {
                 <Button
                   className="bg-black text-white rounded-md p-2 mt-2 w-full"
                   type="submit"
-                  disabled={answerQuestion.isPending}
+                  disabled={loading}
                 >
                   {answerQuestion.isPending ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
