@@ -2,6 +2,7 @@ import { initTRPC } from "@trpc/server";
 import { awsLambdaRequestHandler } from "@trpc/server/adapters/aws-lambda";
 import {
   answerQuestion,
+  answerQuestionSchema,
   createDocument,
   listDocuments,
 } from "@pincone-rag/core/document";
@@ -16,7 +17,7 @@ export const appRouter = t.router({
     .input(z.string())
     .mutation(async ({ input }) => await createDocument(input)),
   answerQuestion: t.procedure
-    .input(z.string())
+    .input(answerQuestionSchema)
     .output(questionResponseSchema)
     .mutation(async ({ input }) => answerQuestion(input)),
 });

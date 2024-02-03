@@ -40,17 +40,20 @@ export function DocumentDetails() {
 
   const doc = docs?.find((x) => x.id === id);
 
-  if (!doc) {
+  if (!doc || !id) {
     return null;
   }
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    answerQuestion.mutate(data.question, {
-      onSuccess(data) {
-        setResponse(data);
-        form.reset();
-      },
-    });
+  function onSubmit(data: z.infer<typeof FormSchema>, id: string) {
+    answerQuestion.mutate(
+      { ...data, id },
+      {
+        onSuccess(data) {
+          setResponse(data);
+          form.reset();
+        },
+      }
+    );
   }
 
   return (
@@ -100,7 +103,7 @@ export function DocumentDetails() {
             </div>
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(onSubmit)}
+                onSubmit={form.handleSubmit((x) => onSubmit(x, id))}
                 className="bg-gray-100 rounded-xl p-4 text-sm dark:bg-gray-800 mt-4"
               >
                 <FormField

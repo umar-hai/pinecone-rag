@@ -26,6 +26,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@langchain/core':
+        specifier: ^0.1.22
+        version: 0.1.22
       '@langchain/openai':
         specifier: ^0.0.14
         version: 0.0.14
@@ -50,6 +53,9 @@ importers:
       langchain:
         specifier: ^0.1.12
         version: 0.1.12(@aws-sdk/credential-provider-node@3.504.0)(@pinecone-database/pinecone@2.0.1)(@planetscale/database@1.14.0)(ws@8.16.0)(youtube-transcript@1.0.6)(youtubei.js@9.0.2)
+      openai:
+        specifier: ^4.26.0
+        version: 4.26.0
       undici:
         specifier: ^6.6.0
         version: 6.6.0
