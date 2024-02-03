@@ -19,8 +19,7 @@ function getYoutubeId(url: string) {
   return x[2] !== undefined ? x[2].split(/[^0-9a-z_\-]/i)[0] : x[0];
 }
 
-export async function createDocument(_foo: string) {
-  const source = "https://www.youtube.com/watch?v=i7xEKHWTKNk";
+export async function createDocument(source: string) {
   const loader = YoutubeLoader.createFromUrl(source, {
     language: "en",
     addVideoInfo: true,
