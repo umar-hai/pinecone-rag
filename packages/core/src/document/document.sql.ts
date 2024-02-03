@@ -11,6 +11,7 @@ export const document = mysqlTable("document", {
     .notNull(),
   name: varchar("name", { length: 256 }).notNull(),
   source: varchar("source", { length: 256 }).notNull(),
+  thumbnail: varchar("thumbnail", { length: 128 }).notNull(),
 });
 
 export const createDocumentSchema = createInsertSchema(document);

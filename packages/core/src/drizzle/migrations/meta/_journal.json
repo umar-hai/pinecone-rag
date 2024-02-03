@@ -15,6 +15,13 @@
       "when": 1706894476729,
       "tag": "0001_tearful_ted_forrester",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1706972702072,
+      "tag": "0002_quick_mojo",
+      "breakpoints": true
     }
   ]
 }

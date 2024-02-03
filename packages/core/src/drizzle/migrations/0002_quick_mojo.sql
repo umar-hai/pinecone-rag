@@ -1,0 +1,1 @@
+ALTER TABLE `pcr_document` ADD `thumbnail` varchar(128) NOT NULL;
