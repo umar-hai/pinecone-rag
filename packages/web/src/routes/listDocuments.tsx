@@ -34,11 +34,12 @@ function DocumentsCardGrid({
             width={320}
           />
           <CardContent className="flex justify-between items-center p-4">
-            <CardTitle className="text-lg font-semibold">
-              <Link className="underline" to={doc.id}>
-                {doc.name}
-              </Link>
-            </CardTitle>
+            <Link
+              className="text-blue-500 underline text-lg font-semibold overflow-hidden overflow-ellipsis whitespace-nowrap"
+              to={doc.id}
+            >
+              {doc.name}
+            </Link>
           </CardContent>
         </Card>
       ))}
