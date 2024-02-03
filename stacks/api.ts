@@ -3,12 +3,17 @@ import { Api } from "sst/constructs";
 import { SECRETS } from "./secrets";
 
 export function API({ stack }: StackContext) {
-  const { database } = use(SECRETS);
+  const { database, pinecone, openai } = use(SECRETS);
 
   const api = new Api(stack, "Api", {
     defaults: {
       function: {
-        bind: [database.DATABASE_PASSWORD, database.DATABASE_USERNAME],
+        bind: [
+          database.DATABASE_PASSWORD,
+          database.DATABASE_USERNAME,
+          pinecone.PINECONE_API_KEY,
+          openai.OPENAI_API_KEY,
+        ],
       },
     },
     routes: {
