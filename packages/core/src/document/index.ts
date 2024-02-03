@@ -1,4 +1,4 @@
-import { NewDocument, document } from "./document.sql";
+import { document } from "./document.sql";
 import { db } from "../drizzle";
 import { YoutubeLoader } from "langchain/document_loaders/web/youtube";
 import { CharacterTextSplitter } from "langchain/text_splitter";
