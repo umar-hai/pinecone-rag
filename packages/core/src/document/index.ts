@@ -57,6 +57,8 @@ export async function createDocument(source: string) {
       namespace: id,
     }
   );
+
+  return id;
 }
 
 export async function listDocuments() {

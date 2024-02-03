@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Loader2 } from "lucide-react";
 
 const FormSchema = z.object({
   videoUrl: z.string().min(1, {
@@ -34,7 +35,7 @@ export function CreateDocument() {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     documentCreator.mutate(data.videoUrl, {
-      onSuccess: () => navigate("../"),
+      onSuccess: (data) => navigate(`/${data}`),
     });
   }
 
@@ -52,13 +53,19 @@ export function CreateDocument() {
                   placeholder="https://www.youtube.com/watch?v=seU46c6Jz7E"
                   type="url"
                   {...field}
+                  disabled={documentCreator.isPending}
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Add video</Button>
+        <Button disabled={documentCreator.isPending} type="submit">
+          {documentCreator.isPending ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : null}
+          Add video
+        </Button>
       </form>
     </Form>
   );
