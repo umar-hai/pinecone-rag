@@ -72,14 +72,8 @@ export function DocumentDetails() {
   return (
     <div className="w-full px-4 mx-auto grid grid-rows-[auto_1fr_auto] gap-4 md:gap-6 pb-10">
       <header>
-        <div className="mx-auto h-14 flex items-center justify-between gap-4">
-          <h1 className="text-3xl font-semibold">{doc.name}</h1>
-          <Button onClick={() => onDelete(id)} variant="destructive">
-            {deleteDocument.isPending ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : null}
-            Delete Video
-          </Button>
+        <div className="mx-auto flex items-center justify-between gap-4">
+          <h1 className="text-2xl font-semibold md:text-3xl">{doc.name}</h1>
         </div>
       </header>
       <main className="grid md:grid-cols-6 gap-10 items-start">
@@ -111,6 +105,16 @@ export function DocumentDetails() {
                     </div>
                   </div>
                 </div>
+                <Button
+                  onClick={() => onDelete(id)}
+                  className="ml-auto"
+                  variant="destructive"
+                >
+                  {deleteDocument.isPending ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}
+                  Delete Video
+                </Button>
               </div>
             </div>
             <div className="bg-gray-100 rounded-xl p-4 text-sm dark:bg-gray-800 overflow-y-auto max-h-[300px]">
