@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 
 export function Layout() {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-dvh">
       <header className="border-b flex h-16 justify-between items-center px-4">
         <div className="container mx-auto flex gap-2 items-center justify-between">
           <div className="flex items-baseline">
