@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { QuestionResponse } from "@pincone-rag/core/document/document.sql";
 import { Loader2 } from "lucide-react";
+import chatgptlogo from "../assets/chatgpt-icon.svg";
 
 const FormSchema = z.object({
   question: z.string().min(1, {
@@ -95,7 +96,7 @@ export function DocumentDetails() {
                     alt="Thumbnail"
                     className="rounded-full object-cover aspect-square"
                     height={40}
-                    src="src/assets/chatgpt-icon.svg"
+                    src={chatgptlogo}
                     width={40}
                   />
                   <div className="text-sm">
