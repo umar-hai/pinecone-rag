@@ -71,7 +71,7 @@ export function DocumentDetails() {
   }
 
   return (
-    <div className="w-full px-4 mx-auto grid grid-rows-[auto_1fr_auto] gap-4 md:gap-6 pb-10">
+    <div className="w-full px-4 mx-auto grid grid-rows-[auto_1fr_auto] gap-4 md:gap-6">
       <header>
         <div className="mx-auto flex items-center justify-between gap-4">
           <h1 className="text-2xl font-semibold md:text-3xl">{doc.name}</h1>
