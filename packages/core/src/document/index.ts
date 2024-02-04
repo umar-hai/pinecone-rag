@@ -86,7 +86,7 @@ export async function answerQuestion({
   );
 
   const llm = new ChatOpenAI({
-    modelName: "gpt-4",
+    modelName: "gpt-3.5-turbo",
     temperature: 0,
     openAIApiKey: Config.OPENAI_API_KEY,
   });
