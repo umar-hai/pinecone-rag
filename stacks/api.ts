@@ -14,6 +14,7 @@ export function API({ stack }: StackContext) {
           pinecone.PINECONE_API_KEY,
           openai.OPENAI_API_KEY,
         ],
+        timeout: "1 minute",
       },
     },
     routes: {
